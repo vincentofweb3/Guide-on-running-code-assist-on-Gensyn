@@ -3,13 +3,15 @@ This Guide is for everyone who 's personally running the gensyn node before
 
 ---
 
-# it's a Simple Guide for Installing & Running Gensyn CodeAssist on a VPS
+
+## it's a Simple Guide for Installing & Running Gensyn CodeAssist on a VPS
 
 This guide walks you through how to install and run **Gensyn CodeAssist** on your VPS — especially if you’re running both your **Gensyn Node** and **CodeAssist** on the same server.
 
 It also explains how to connect to the CodeAssist web interface from your **local machine (WSL)** using **SSH port forwarding**.
 
 ---
+
 
 ## **Step-by-Step Setup**
 
@@ -21,6 +23,7 @@ git clone https://github.com/gensyn-ai/codeassist
 
 ---
 
+
 ### **Step 2.  Install UV (Astral Runtime)**
 
 ```bash
@@ -28,6 +31,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ---
+
 
 ### **Step 3.  Reload Your Shell**
 
@@ -39,6 +43,7 @@ source ~/.bashrc
 
 ---
 
+
 ### **Step 4.  Go Into the Project Directory**
 
 ```bash
@@ -46,6 +51,7 @@ cd codeassist
 ```
 
 ---
+
 
 ### Step 5.  Change the Port (this is for VPS USers Running Both Gensyn Node & CodeAssist)
 
@@ -75,6 +81,7 @@ Save and exit ( Ctrl + X, press y and Enter ).
 
 ---
 
+
 #### **Edit the `run.py` File**
 
 ```bash
@@ -97,6 +104,7 @@ Save and exit the file.
 
 ---
 
+
 ### **Step 6.  Run CodeAssist**
 
 ```bash
@@ -109,6 +117,7 @@ When you’re prompted for your **Hugging Face token**:
 * Press **Enter** when done.
 
 ---
+
 
 ### **Step 7.  Forward Ports to Your Local Machine (WSL)**
 
@@ -133,11 +142,13 @@ If your VPS uses a public SSH key, you may just need to confirm with `yes` and e
 
 ---
 
+
 ## Optional: Use SSH Key Authentication (Recommended)
 
 If you’d rather not type your password every time you connect, you can set up SSH key authentication.
 
 ---
+
 
 ### **Step 1.  Generate an SSH Key**
 
@@ -150,6 +161,7 @@ ssh-keygen -t ed25519 -C "rayyy"
 
 ---
 
+
 ### **Step 2.  Display Your Public Key**
 
 ```bash
@@ -159,6 +171,7 @@ cat ~/.ssh/id_ed25519.pub
 Copy the entire line that appears — this is your **public SSH key**.
 
 ---
+
 
 ### **Step 3.  Add Your Key to the VPS**
 
@@ -176,11 +189,13 @@ Paste your copied key inside the file, then save:
 Ctrl + O → Enter → Ctrl + X
 ```
 
+
 ---
 
 > ⚠️ For VPS hosts like **Serverica**, SSH keys can’t be added later from the dashboard. Use the **VNC console** method instead to add it manually — once done, your local system will connect without needing a password.
 
 ---
+
 
 ### **Step 4.  Connect Using Your Key**
 
@@ -197,6 +212,7 @@ ssh -L 3001:localhost:3001 \
 No password needed this time...it connects automatically
 
 ---
+
 
 ### **Step 8.  Access CodeAssist in Your Browser**
 
@@ -233,6 +249,7 @@ ssh -L 3001:localhost:3001 -L 8000:localhost:8000 -L 8001:localhost:8001 -L 8008
 
 ---
 
+
 ## Tips & Notes
 
 * When pasting your Hugging Face token, it won’t display - that’s normal.
@@ -243,6 +260,7 @@ ssh -L 3001:localhost:3001 -L 8000:localhost:8000 -L 8001:localhost:8001 -L 8008
 * SSH keys are faster, safer, and save time for future logins.
 
 ---
+
 
 **You’re all set!**
 Once logged in, you can start using **Gensyn CodeAssist** to write, run, and debug code directly from your browser - powered by your own VPS setup.
